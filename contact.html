@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - My Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <header id="hero">
+        <img src="/imgs/logo.png" alt="Logo" id="logo">
+        <h1 id="portfoliowelcome">Contact Page </h1>
+        
+
+  
+
+    </header>
+
+
+
+    <!-- Hidden Nav Bar Pt2 -->
+    <nav id="hiddenNav" class="hiddenNav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+     <!-- Floating particle button -->
+<div id="floatingButton" class="floating-button">
+    <!-- This div will represent the button as particles -->
+   
+</div>
+
+
+    <main>
+        <section id="contact-details">
+            <h2>Get in Touch</h2>
+            <p>If you would like to discuss potential projects, collaborations, or other things, please fill the form below.
+            
+            <form action="mailto:your@email.com" method="post" enctype="text/plain">
+                <div class="form-group">
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address:</label>
+                    <input type="email" id="email" name="email" placeholder="exampleemail@gmail.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message:</label>
+                    <textarea id="message" name="message" placeholder="Your message here" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </div>
+            </form>
+
+            <p class="note">Please allow up to 48 hours for a response. Thank you for your interest!</p>
+        </section>
+        
+        <!-- Hidden interactive path (Easter Egg) -->
+        <div id="hidden-passages">
+            <button id="secretPath" class="hiddenButton">Secret Path</button>
+        </div>
+    </main>
+</body>
+<footer id="footer">
+    <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
+</footer>
+</html>
