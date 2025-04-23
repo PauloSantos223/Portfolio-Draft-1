@@ -157,7 +157,7 @@ let combo = [];
 const konamiCode = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 
 secretPath.addEventListener('click', function() {
-  // 1. Start combo recording
+  // 1. Starts combo recording
   document.addEventListener("keydown", checkKonami);
   alert("Secret mode activated! Enter the code...");
 });
@@ -167,7 +167,7 @@ function checkKonami(e) {
   if (combo.length > konamiCode.length) combo.shift();
   
   if (combo.join() === konamiCode.join()) {
-    // 2. Unlock 8-bit game style
+    // 2. Unlocks an 8-bit game style
     document.removeEventListener("keydown", checkKonami);
     
     gsap.to("body", {
@@ -234,7 +234,72 @@ function checkKonami(e) {
         `;
         document.body.appendChild(cursor);
       }
+
+
+      
     });
+
+    gsap.to("#portal", {
+      duration: 2,
+      width: "200vmax",
+      height: "200vmax",
+      opacity: 0.9,
+      ease: "power4.out",
+      onStart: () => {
+        // 2. Suck all page elements toward the portal
+        gsap.to("header, section, footer", {
+          duration: 3,
+          x: () => Math.random() * 200 - 100,
+          y: () => Math.random() * 200 - 100,
+          rotation: () => Math.random() * 360,
+          scale: 0.8,
+          opacity: 0.7,
+          stagger: 0.1
+        });
+        
+        // 3. Emit cosmic particles
+        for (let i = 0; i < 100; i++) {
+          const star = document.createElement("div");
+          star.className = "cosmic-star";
+          star.style.cssText = `
+            position: fixed;
+            width: ${Math.random() * 6 + 2}px;
+            height: ${Math.random() * 6 + 2}px;
+            background: hsl(${Math.random() * 60 + 200}, 100%, 70%);
+            border-radius: 50%;
+            left: ${Math.random() * 100}vw;
+            top: ${Math.random() * 100}vh;
+          `;
+          document.body.appendChild(star);
+          
+          gsap.to(star, {
+            x: Math.random() * 500 - 250,
+            y: Math.random() * 500 - 250,
+            opacity: 0,
+            duration: 3,
+            onComplete: () => star.remove()
+          });
+        }
+      }
+    });
+    
+    // 4. Transform the entire page
+    gsap.to("body", {
+      background: "radial-gradient(circle, #000428 0%, #004e92 100%)",
+      color: "white",
+      duration: 3
+    });
+    
+    // 5. Make logo float away
+    gsap.to("#logo", {
+      y: -100,
+      rotation: 360,
+      scale: 1.5,
+      duration: 4,
+      ease: "power1.out"
+    });
+
+
   }
 }
 
