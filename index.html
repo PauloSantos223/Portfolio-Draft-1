@@ -9,6 +9,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400&family=Poppins:wght@600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js" defer></script>
 </head>
 
@@ -63,33 +64,39 @@
             
             <!-- JavaScript Projects -->
             <div class="project-category">
-              <h3 class="category-title">JavaScript Projects</h3>
+              <h3 class="category-title">Showcase Projects</h3>
               <div class="projects-grid">
                 <div class="project-card">
-                  <div class="project-image" style="background-image: url('imgs/js-project1.jpg')"></div>
+                  <div class="project-image" style="background-image: url('imgs/kaboompicture.jpg')"></div>
                   <div class="project-info">
-                    <h4>Interactive Quiz App</h4>
-                    <p>A dynamic quiz application with score tracking and timer</p>
+                    <h4>Kaboom Portfolio</h4>
+                    <p>A portfolio about myself using the Kaboom JS library.</p>
                     <div class="project-tags">
                       <span>JavaScript</span>
                       <span>HTML5</span>
                       <span>CSS3</span>
                     </div>
-                    <a href="#" class="project-link">View Project</a>
+                    <div class="project-actions">
+                        <a href="projects.html#project-1" class="project-link">Project Details</a>
+                        <a href="https://github.com/RVCC-IDMX/js-final-PauloSantos223" target="_blank" class="secondary-link">
+                          <i class="fab fa-github"></i> Code
+                        </a>
+                      </div>
                   </div>
                 </div>
 
-        <!-- Hidden interactive path (Easter Egg) -->
-        <div id="hidden-passages">
-            <button id="secretPath" class="hiddenButton">Secret Path</button>
-        </div>
+                <div id="secretPathContainer">
+                    <button id="secretPath" class="hiddenButton">Secret Path</button>
+                    <div id="portalEffect" class="portal-hidden"></div>
+                  </div>
+
     </main>
 </body>
 <footer id="main-footer">
     <div class="footer-content">
       <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
       <div class="footer-links">
-        <a href="#">GitHub</a>
+        <a href="https://github.com/PauloSantos223">GitHub</a>
         <a href="#">LinkedIn</a>
         <a href="#">Contact</a>
       </div>

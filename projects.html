@@ -6,6 +6,7 @@
         <title>My Portfolio</title>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
         <script src="script.js" defer></script>
     </head>
     <body>
@@ -51,30 +52,35 @@
     
     
         <main>
-            <!-- Section that will change -->
-            <section id="projects">
-                <h2>My Projects</h2>
-                <div class="project" id="project1">
-                    <h3>Project 1</h3>
-                    <p>Click to see more...</p>
-                </div>
-                <div class="project" id="project2">
-                    <h3>Project 2</h3>
-                    <p>Click to see more...</p>
-                </div>
-                <div class="project" id="project3">
-                    <h3>Project 3</h3>
-                    <p>Click to see more...</p>
-                </div>
-            </section>
+             <!-- JavaScript Projects -->
+             <div class="project-category">
+                <h3 class="category-title">JavaScript Projects</h3>
+                <div class="projects-grid">
+                  <div class="project-card">
+                    <div class="project-image" style="background-image: url('imgs/kaboompicture.jpg')"></div>
+                    <div class="project-info">
+                      <h4>Interactive Quiz App</h4>
+                      <p>A dynamic quiz application with score tracking and timer</p>
+                      <div class="project-tags">
+                        <span>JavaScript</span>
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                      </div>
+                      <a href="#" class="project-link">View Project</a>
+                    </div>
+                  </div>
             
-            <!-- Hidden interactive path (Easter Egg) -->
-            <div id="hidden-passages">
-                <button id="secretPath" class="hiddenButton">Secret Path</button>
-            </div>
+           
         </main>
     </body>
-    <footer id="footer">
-        <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
-    </footer>
+    <footer id="main-footer">
+        <div class="footer-content">
+          <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
+          <div class="footer-links">
+            <a href="https://github.com/PauloSantos223">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Contact</a>
+          </div>
+        </div>
+      </footer>
 </html>

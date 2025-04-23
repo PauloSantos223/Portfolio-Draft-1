@@ -271,6 +271,54 @@ h1 {
     width: 30px;
   }
   
+
+  #secretPathContainer {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+  
+  /* Base Button Style */
+  .hiddenButton {
+    background: linear-gradient(135deg, #E9C46A 0%, #F4A261 100%);
+    color: #003366;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(233, 196, 106, 0.4);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Portal Effect (Initially Hidden) */
+  .portal-hidden {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(244,162,97,0.8) 0%, rgba(0,51,102,0.9) 70%);
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    pointer-events: none;
+    opacity: 0;
+  }
+  
+  /* Particle Class */
+  .secret-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
   
   /* Animation when nav opens */
 @keyframes navLinkFade {
@@ -392,6 +440,25 @@ h1 {
     animation: float 10s infinite ease-in-out;
 }
 
+.project-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .secondary-link {
+    background: rgba(0, 51, 102, 0.7);
+    color: #E9C46A;
+  }
+
+.project-detail:target {
+    animation: highlight 1.5s ease;
+    border-left: 3px solid #F4A261;
+    padding-left: 1rem;
+  }
+  @keyframes highlight {
+    from { background: rgba(244, 164, 97, 0.3); }
+    to { background: transparent; }
+  }
 
 
 /* New Layout After Click */
@@ -400,6 +467,10 @@ h1 {
     flex-direction: row; 
     justify-content: space-around;
     color: #2b2b2b;
+}
+
+.new-layout .secondary-link {
+    background-color: #F4A261;
 }
 
 .new-layout #portfoliowelcome {
