@@ -18,6 +18,7 @@
         <img src="/imgs/logo.png" alt="Logo" id="logo">
         <h1 id="portfoliowelcome">Welcome to My Portfolio</h1>
         <p class="tagline">Explore the hidden treasures and find out more about my work.</p>
+        <p class="intro">I build all types of projects using Javascript, HTML, and CSS.</p>
 
 
 
@@ -25,19 +26,29 @@
     </header>
 
 
+<!-- Floating Nav Trigger Button -->
+<button id="navTrigger" class="nav-trigger" aria-label="Toggle navigation">
+    <span class="trigger-line"></span>
+    <span class="trigger-line"></span>
+    <span class="trigger-line"></span>
+  </button>
 
-    <!-- Hidden Nav Bar Pt2 -->
-    <nav id="hiddenNav" class="hiddenNav">
-        <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="about.html">About Me</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+
+
+    <!-- Hidden Navigation Panel -->
+<nav id="hiddenNav" class="hidden-nav">
+    <div class="nav-content">
+      <ul class="nav-links">
+        <li><a href="index.html" class="nav-link">Home</a></li>
+        <li><a href="projects.html" class="nav-link">Projects</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
     <!-- Floating particle button -->
-    <div id="floatingButton" class="floating-button">
+    <div id="floatingButton" class="floating-button" aria-label="Toggle navigation">
         <!-- This div will represent the button as particles -->
 
     </div>
@@ -47,24 +58,26 @@
 
         <!-- Section that will change -->
 
-        <section id="">
-            <h2>My Projects</h2>
-            <div id="projects">
-
-                <div class="project" id="project1">
-                    <h3>Project 1</h3>
-                    <p>Click to see more...</p>
+        <section class="projects-section">
+            <h2>My Work</h2>
+            
+            <!-- JavaScript Projects -->
+            <div class="project-category">
+              <h3 class="category-title">JavaScript Projects</h3>
+              <div class="projects-grid">
+                <div class="project-card">
+                  <div class="project-image" style="background-image: url('imgs/js-project1.jpg')"></div>
+                  <div class="project-info">
+                    <h4>Interactive Quiz App</h4>
+                    <p>A dynamic quiz application with score tracking and timer</p>
+                    <div class="project-tags">
+                      <span>JavaScript</span>
+                      <span>HTML5</span>
+                      <span>CSS3</span>
+                    </div>
+                    <a href="#" class="project-link">View Project</a>
+                  </div>
                 </div>
-                <div class="project" id="project2">
-                    <h3>Project 2</h3>
-                    <p>Click to see more...</p>
-                </div>
-                <div class="project" id="project3">
-                    <h3>Project 3</h3>
-                    <p>Click to see more...</p>
-                </div>
-            </div>
-        </section>
 
         <!-- Hidden interactive path (Easter Egg) -->
         <div id="hidden-passages">
@@ -72,8 +85,15 @@
         </div>
     </main>
 </body>
-<footer id="footer">
-    <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
-</footer>
+<footer id="main-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
+      <div class="footer-links">
+        <a href="#">GitHub</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
 
 </html>
