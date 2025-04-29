@@ -42,6 +42,45 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  if (document.querySelector('.skills-section')) {
+    gsap.registerPlugin(ScrollTrigger); // Ensure ScrollTrigger is registered
+    
+    gsap.utils.toArray('.skill-progress').forEach(bar => {
+      const targetWidth = bar.style.width;
+      const percentText = bar.closest('.skill-item').querySelector('span:last-child');
+      const targetPercent = parseInt(percentText.textContent);
+      
+      // Reset initial state
+      gsap.set(bar, { width: 0 });
+      gsap.set(percentText, { innerText: 0 });
+      
+      // Create animation
+      gsap.to(bar, {
+        width: targetWidth,
+        duration: 1.5,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: bar.closest('.skills-column'),
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+      
+      // Animate percentage counter
+      gsap.to(percentText, {
+        innerText: targetPercent,
+        duration: 1.5,
+        snap: { innerText: 1 },
+        ease: "power3.out"
+      });
+    });
+  }
+
+
+  function initAllAnimations() {
+    initSkillAnimations();
+  }
+
   // --------------------------
   // 2. PROJECTS CAROUSEL
   // (Only runs on projects page)
@@ -110,51 +149,53 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // --------------------------
-// PROJECT FILTERING SYSTEM
-// --------------------------
-const filterButtons = document.querySelectorAll('.filter-btn');
-if (filterButtons.length > 0) {
-  filterButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      // Remove active class from all buttons
-      filterButtons.forEach(btn => btn.classList.remove('active'));
-      // Add active class to clicked button
-      button.classList.add('active');
-      
-      const filterValue = button.dataset.filter;
-      filterProjects(filterValue);
-    });
-  });
-}
-
-function filterProjects(filter) {
-  const cards = document.querySelectorAll('.project-card');
   
-  cards.forEach(card => {
-    const tags = Array.from(card.querySelectorAll('.project-tags span'))
-                  .map(tag => tag.textContent.toLowerCase());
-    
-    if (filter === 'all' || tags.includes(filter)) {
-      card.style.display = 'block';
-      // Animate appearance
-      gsap.fromTo(card, 
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.5 }
-      );
-    } else {
-      // Animate disappearance
-      gsap.to(card, {
-        opacity: 0,
-        y: -20,
-        duration: 0.3,
-        onComplete: () => {
-          card.style.display = 'none';
-        }
+
+  // --------------------------
+  // PROJECT FILTERING SYSTEM
+  // --------------------------
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  if (filterButtons.length > 0) {
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+
+        const filterValue = button.dataset.filter;
+        filterProjects(filterValue);
       });
-    }
-  });
-}
+    });
+  }
+
+  function filterProjects(filter) {
+    const cards = document.querySelectorAll('.project-card');
+
+    cards.forEach(card => {
+      const tags = Array.from(card.querySelectorAll('.project-tags span'))
+        .map(tag => tag.textContent.toLowerCase());
+
+      if (filter === 'all' || tags.includes(filter)) {
+        card.style.display = 'block';
+        // Animate appearance
+        gsap.fromTo(card,
+          { opacity: 0, y: 20 },
+          { opacity: 1, y: 0, duration: 0.5 }
+        );
+      } else {
+        // Animate disappearance
+        gsap.to(card, {
+          opacity: 0,
+          y: -20,
+          duration: 0.3,
+          onComplete: () => {
+            card.style.display = 'none';
+          }
+        });
+      }
+    });
+  }
 
   // --------------------------
   // 3. SECRET PATH EFFECTS
@@ -204,6 +245,8 @@ function filterProjects(filter) {
       ease: "power2.inOut"
     });
   });
+
+  
 
 
 
@@ -496,6 +539,7 @@ function filterProjects(filter) {
     });
   });
 });
+
 
 // Initialize console log
 console.log("Portfolio script loaded successfully");
