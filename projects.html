@@ -1,30 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>My Portfolio</title>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400&family=Poppins:wght@600&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="styles.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-        <script src="script.js" defer></script>
-    </head>
-    <body>
-    
-        <header id="hero">
-            <img src="/imgs/logo.png" alt="Logo" id="logo">
-            <h1 id="portfoliowelcome">Welcome to My Portfolio</h1>
-            <p class="tagline">Explore the hidden treasures and find out more about my work.</p>
-            
-    
-      
-    
-        </header>
-    
-    
-    
-        <!-- Floating Nav Trigger Button -->
-<button id="navTrigger" class="nav-trigger" aria-label="Toggle navigation">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Montserrat:wght@400&family=Poppins:wght@600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <header id="hero">
+    <img src="/imgs/logo.png" alt="Logo" id="logo">
+    <h1 id="portfoliowelcome">Welcome to My Portfolio</h1>
+    <p class="tagline">Explore the hidden treasures and find out more about my work.</p>
+
+
+
+
+  </header>
+
+
+
+  <!-- Floating Nav Trigger Button -->
+  <button id="navTrigger" class="nav-trigger" aria-label="Toggle navigation">
     <span class="trigger-line"></span>
     <span class="trigger-line"></span>
     <span class="trigger-line"></span>
@@ -32,8 +36,8 @@
 
 
 
-    <!-- Hidden Navigation Panel -->
-<nav id="hiddenNav" class="hidden-nav">
+  <!-- Hidden Navigation Panel -->
+  <nav id="hiddenNav" class="hidden-nav">
     <div class="nav-content">
       <ul class="nav-links">
         <li><a href="index.html" class="nav-link">Home</a></li>
@@ -43,82 +47,139 @@
       </ul>
     </div>
   </nav>
-    
-         <!-- Floating particle button -->
-    <div id="floatingButton" class="floating-button">
-        <!-- This div will represent the button as particles -->
-       
-    </div>
-    
-    
-        <main>
-             <!-- All Projects / Gallery showcase with filters?--> 
-            <div class="project-category">
-              <h3 class="category-title">All Projects</h3>
-              <div class="projects-grid">
-                <div class="project-card">
-                  <div class="project-image" style="background-image: url('imgs/kaboompicture.jpg')"></div>
-                  <div class="project-info">
-                    <h4>Kaboom Portfolio</h4>
-                    <p>A portfolio about myself using the Kaboom JS library.</p>
-                    <div class="project-tags">
-                      <span>JavaScript</span>
-                    </div>
-                    <div class="project-actions">
-                        <a href="projects.html#project-1" class="project-link">Project Details</a>
-                        <a href="https://github.com/RVCC-IDMX/js-final-PauloSantos223" target="_blank" class="secondary-link">
-                          <i class="fab fa-github"></i> Code
-                        </a>
-                      </div>
-                  </div>
+
+  <!-- Floating particle button -->
+  <div id="floatingButton" class="floating-button">
+    <!-- This div will represent the button as particles -->
+
+  </div>
+
+
+  <main>
+    <!-- All Projects / Gallery showcase with filters?-->
+
+    <section class="projects-carousel">
+      <h3 class="category-title">All Projects</h3>
+
+      <div class="carousel-wrapper">
+        <button class="carousel-btn prev-btn" aria-label="Previous project">
+
+        </button>
+
+        <div class="carousel-container">
+          <div class="carousel-track">
+            <div class="project-card">
+              <div class="project-image" style="background-image: url('imgs/kaboompicture.jpg')"></div>
+              <div class="project-info">
+                <h4>Kaboom Portfolio</h4>
+                <p>A portfolio about myself using the Kaboom JS library.</p>
+                <div class="project-tags">
+                  <span>JavaScript</span>
                 </div>
-                <div class="project-card">
-                    <div class="project-image" style="background-image: url('imgs/miragepoem.jpg')"></div>
-                    <div class="project-info">
-                      <h4>Poem Page</h4>
-                      <p>A simple poem site that displays a poem to the user.</p>
-                      <div class="project-tags">
-                        <span>JavaScript</span>
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                      </div>
-                      <div class="project-actions">
-                          <a href="projects.html#project-2" class="project-link">Project Details</a>
-                          <a href="https://github.com/IDMX225/poem-site-PauloSantos223" target="_blank" class="secondary-link">
-                            <i class="fab fa-github"></i> Code
-                          </a>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="project-card">
-                    <div class="project-image" style="background-image: url('imgs/resistorcalculator.jpg')"></div>
-                    <div class="project-info">
-                      <h4>Resistor Calculator</h4>
-                      <p>A resistor calculator program that lets users calculate different resistors.</p>
-                      <div class="project-tags">
-                        <span>JavaScript</span>
-                        <span>HTML5</span>
-                      </div>
-                      <div class="project-actions">
-                          <a href="projects.html#project-3" class="project-link">Project Details</a>
-                          <a href="https://github.com/RVCC-IDMX/resistor-PauloSantos223" target="_blank" class="secondary-link">
-                            <i class="fab fa-github"></i> Code
-                          </a>
-                        </div>
-                    </div>
-                  </div>
-            
-           
-        </main>
-    </body>
-    <footer id="main-footer">
-        <div class="footer-content">
-          <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
-          <div class="footer-links">
-            <a href="https://github.com/PauloSantos223">GitHub</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Contact</a>
-          </div>
-        </div>
-      </footer>
+                <div class="project-actions">
+                  <a href="projects.html#project-1" class="project-link">Project Details</a>
+                  <a href="https://github.com/RVCC-IDMX/js-final-PauloSantos223" target="_blank" class="secondary-link">
+                    <i class="fab fa-github"></i> Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image" style="background-image: url('imgs/miragepoem.jpg')"></div>
+              <div class="project-info">
+                <h4>Poem Page</h4>
+                <p>A simple poem site that displays a poem to the user.</p>
+                <div class="project-tags">
+                  <span>JavaScript</span>
+                  <span>HTML5</span>
+                  <span>CSS3</span>
+                </div>
+                <div class="project-actions">
+                  <a href="projects.html#project-2" class="project-link">Project Details</a>
+                  <a href="https://github.com/IDMX225/poem-site-PauloSantos223" target="_blank" class="secondary-link">
+                    <i class="fab fa-github"></i> Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image" style="background-image: url('imgs/resistorcalculator.jpg')"></div>
+              <div class="project-info">
+                <h4>Resistor Calculator</h4>
+                <p>A resistor calculator program that lets users calculate different resistors.</p>
+                <div class="project-tags">
+                  <span>JavaScript</span>
+                  <span>HTML5</span>
+                </div>
+                <div class="project-actions">
+                  <a href="projects.html#project-3" class="project-link">Project Details</a>
+                  <a href="https://github.com/RVCC-IDMX/resistor-PauloSantos223" target="_blank" class="secondary-link">
+                    <i class="fab fa-github"></i> Code
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-image" style="background-image: url('imgs/todolist.JPG')"></div>
+              <div class="project-info">
+                <h4>Todo List</h4>
+                <p>A simple todolist page where users add, remove, and configure different todo lists.</p>
+                <div class="project-tags">
+                  <span>JavaScript</span>
+                  <span>HTML5</span>
+                </div>
+                <div class="project-actions">
+                  <a href="projects.html#project-4" class="project-link">Project Details</a>
+                  <a href="https://github.com/RVCC-IDMX/todo-list-PauloSantos223" target="_blank"
+                    class="secondary-link">
+                    <i class="fab fa-github"></i> Code
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image" style="background-image: url('imgs/portfoliowebsite.JPG')"></div>
+              <div class="project-info">
+                <h4>Website Portfolio</h4>
+                <p>An example website for a portfolio with other work.</p>
+                <div class="project-tags">
+                  <span>JavaScript</span>
+                  <span>HTML5</span>
+                  <span>CSS3</span>
+                </div>
+                <div class="project-actions">
+                  <a href="projects.html#project-5" class="project-link">Project Details</a>
+                  <a href="https://github.com/IDMX225/portfolio-PauloSantos223" target="_blank" class="secondary-link">
+                    <i class="fab fa-github"></i> Code
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div> <!-- Closes carousel-track -->
+        </div> <!-- Closes carousel-container -->
+
+        <button class="carousel-btn next-btn" aria-label="Next project">
+
+        </button>
+      </div>
+
+      <div class="carousel-dots"></div>
+    </section>
+
+  </main>
+</body>
+<footer id="main-footer">
+  <div class="footer-content">
+    <p>&copy; 2025 Paulo Santos. All Rights Reserved.</p>
+    <div class="footer-links">
+      <a href="https://github.com/PauloSantos223">GitHub</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
 </html>
