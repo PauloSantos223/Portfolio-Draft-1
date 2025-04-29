@@ -56,10 +56,21 @@
 
 
   <main>
+
+
     <!-- All Projects / Gallery showcase with filters?-->
 
     <section class="projects-carousel">
       <h3 class="category-title">All Projects</h3>
+
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="html5">HTML5</button>
+        <button class="filter-btn" data-filter="css3">CSS3</button>
+        <button class="filter-btn" data-filter="javascript">JavaScript</button>
+        <button class="filter-btn" data-filter="python">Python</button>
+        <button class="filter-btn" data-filter="penpot">Penpot</button>
+      </div>
 
       <div class="carousel-wrapper">
         <button class="carousel-btn prev-btn" aria-label="Previous project">
@@ -68,7 +79,7 @@
 
         <div class="carousel-container">
           <div class="carousel-track">
-            <div class="project-card">
+            <div class="project-card" data-category="javascript">
               <div class="project-image" style="background-image: url('imgs/kaboompicture.jpg')"></div>
               <div class="project-info">
                 <h4>Kaboom Portfolio</h4>
@@ -85,7 +96,7 @@
               </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="javascript html5 css3">
               <div class="project-image" style="background-image: url('imgs/miragepoem.jpg')"></div>
               <div class="project-info">
                 <h4>Poem Page</h4>
@@ -104,7 +115,7 @@
               </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="javascript html5">
               <div class="project-image" style="background-image: url('imgs/resistorcalculator.jpg')"></div>
               <div class="project-info">
                 <h4>Resistor Calculator</h4>
@@ -122,7 +133,7 @@
               </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-category="javascript html5">
               <div class="project-image" style="background-image: url('imgs/todolist.JPG')"></div>
               <div class="project-info">
                 <h4>Todo List</h4>
@@ -140,7 +151,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="javascript html5 css3">
               <div class="project-image" style="background-image: url('imgs/portfoliowebsite.JPG')"></div>
               <div class="project-info">
                 <h4>Website Portfolio</h4>
@@ -158,7 +169,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="html5 css3">
               <div class="project-image" style="background-image: url('imgs/animatedsvg.JPG')"></div>
               <div class="project-info">
                 <h4>Animated SVG</h4>
@@ -176,7 +187,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="html5 css3">
               <div class="project-image" style="background-image: url('imgs/magiccard.JPG')"></div>
               <div class="project-info">
                 <h4>Magic Card Codepen</h4>
@@ -194,7 +205,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="html5">
               <div class="project-image" style="background-image: url('imgs/particlelife.JPG')"></div>
               <div class="project-info">
                 <h4>Particle Life</h4>
@@ -210,7 +221,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="javascript html5">
               <div class="project-image" style="background-image: url('imgs/allthefishes.JPG')"></div>
               <div class="project-info">
                 <h4>All the Fishes</h4>
@@ -228,7 +239,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="python">
               <div class="project-image" style="background-image: url('imgs/chooseyouradventure.JPG')"></div>
               <div class="project-info">
                 <h4>Choose Your Adventure</h4>
@@ -245,7 +256,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="penpot">
               <div class="project-image" style="background-image: url('imgs/penpot.JPG')"></div>
               <div class="project-info">
                 <h4>Diary App Penpot</h4>
@@ -262,7 +273,7 @@
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="html5 css3">
               <div class="project-image" style="background-image: url('imgs/aboutmefinal.JPG')"></div>
               <div class="project-info">
                 <h4>About Me Page - Final</h4>
@@ -273,14 +284,13 @@
                 </div>
                 <div class="project-actions">
                   <a href="projects.html#project-12" class="project-link">Project Details</a>
-                  <a href="https://github.com/PauloSantos223/About-me" target="_blank"
-                    class="secondary-link">
+                  <a href="https://github.com/PauloSantos223/About-me" target="_blank" class="secondary-link">
                     <i class="fab fa-github"></i> Code
                   </a>
                 </div>
               </div>
             </div>
-            <div class="project-card">
+            <div class="project-card" data-category="html5 css3">
               <div class="project-image" style="background-image: url('imgs/firstwebsite.JPG')"></div>
               <div class="project-info">
                 <h4>Web Page - First Form</h4>

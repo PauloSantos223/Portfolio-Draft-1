@@ -381,6 +381,7 @@ h1 {
   gap: 2.5rem;
   padding: 2rem 0;
   transition: transform 0.5s ease;
+  justify-content: flex-start;
 }
 
 
@@ -478,6 +479,7 @@ h1 {
   flex-direction: column;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform, opacity;
 }
 
 .project-card:hover {
@@ -544,6 +546,41 @@ h1 {
 .project-link:hover {
   background: #F4A261;
 }
+
+
+
+/* Project Filters */
+.project-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 30px;
+}
+
+.filter-btn {
+  padding: 8px 16px;
+  background: rgba(233, 196, 106, 0.2);
+  color: #E9C46A;
+  border: 1px solid rgba(233, 196, 106, 0.3);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+  background: rgba(233, 196, 106, 0.4);
+}
+
+.filter-btn.active {
+  background: #E9C46A;
+  color: #003366;
+  font-weight: 500;
+}
+
+
 
 
 

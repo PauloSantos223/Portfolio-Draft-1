@@ -1,113 +1,166 @@
-
-console.log("Script JS is working :)");
-
+/**
+ * Portfolio Main Script
+ * - Responsive navigation
+ * - Projects carousel (projects page only)
+ * - Special effects and easter eggs
+ */
 
 document.addEventListener("DOMContentLoaded", function () {
-  // Get elements
+  // --------------------------
+  // 1. NAVIGATION SYSTEM
+  // --------------------------
   const navTrigger = document.getElementById('navTrigger');
   const hiddenNav = document.getElementById('hiddenNav');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const logo = document.getElementById('logo');
-  const body = document.body;
-  const secretPath = document.getElementById('secretPath');
-  const portalEffect = document.getElementById('portalEffect');
-  const track = document.querySelector('.carousel-track');
-  const cards = document.querySelectorAll('.project-card');
-  const prevBtn = document.querySelector('.prev-btn');
-  const nextBtn = document.querySelector('.next-btn');
-  const cardWidth = cards[0].offsetWidth + 32;
-  let currentPosition = 0;
 
-  const totalWidth = cardWidth * cards.length
+  if (navTrigger && hiddenNav) {
+    const navLinks = document.querySelectorAll('.nav-link');
 
+    // Toggle navigation menu
+    navTrigger.addEventListener('click', function () {
+      // Toggle active class on nav
+      hiddenNav.classList.toggle('active');
 
-  function updateButtons() {
-    prevBtn.disabled = currentPosition === 0;
-    nextBtn.disabled = currentPosition <= -(totalWidth - cardWidth * Math.floor(track.offsetWidth / cardWidth));
-  }
+      // Toggle open class on button
+      this.classList.toggle('open');
 
-// Moves carousel
-function moveCarousel() {
-  track.style.transform = `translateX(${currentPosition}px)`;
-  updateButtons();
-}
-
-nextBtn.addEventListener('click', () => {
-  const maxPosition = -(totalWidth - track.offsetWidth);
-  currentPosition = Math.max(currentPosition - cardWidth, maxPosition);
-  moveCarousel();
-});
-
-prevBtn.addEventListener('click', () => {
-  currentPosition = Math.min(currentPosition + cardWidth, 0);
-  moveCarousel();
-});
-
-updateButtons();
-
-// Touch support for mobile
-let touchStartX = 0;
-let touchEndX = 0;
-
-track.addEventListener('touchstart', (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-}, {passive: true});
-
-track.addEventListener('touchend', (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  handleSwipe();
-}, {passive: true});
-
-function handleSwipe() {
-  if (touchEndX < touchStartX) {
-    // Swipe left - next
-    nextBtn.click();
-  } else if (touchEndX > touchStartX) {
-    // Swipe right - prev
-    prevBtn.click();
-  }
-}
-
-
-
-
-
-
-  // Toggle navigation menu
-  navTrigger.addEventListener('click', function () {
-    // Toggle active class on nav
-    hiddenNav.classList.toggle('active');
-
-    // Toggle open class on button
-    this.classList.toggle('open');
-
-    // Animate links
-    navLinks.forEach((link, index) => {
-      if (hiddenNav.classList.contains('active')) {
-        link.style.animation = `navLinkFade 0.5s ease forwards ${index * 0.1 + 0.3}s`;
-      } else {
-        link.style.animation = '';
-      }
-    });
-  });
-
-  // Close menu when clicking a link
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      hiddenNav.classList.remove('active');
-      navTrigger.classList.remove('open');
-    });
-  });
-
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
+      // Animate links
+      navLinks.forEach((link, index) => {
+        if (hiddenNav.classList.contains('active')) {
+          link.style.animation = `navLinkFade 0.5s ease forwards ${index * 0.1 + 0.3}s`;
+        } else {
+          link.style.animation = '';
+        }
       });
     });
+
+    // Close menu when clicking a link
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        hiddenNav.classList.remove('active');
+        navTrigger.classList.remove('open');
+      });
+    });
+  }
+
+  // --------------------------
+  // 2. PROJECTS CAROUSEL
+  // (Only runs on projects page)
+  // --------------------------
+  const carouselTrack = document.querySelector('.carousel-track');
+
+  if (carouselTrack) {
+    const cards = document.querySelectorAll('.project-card');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const cardWidth = cards[0]?.offsetWidth + 32 || 332; // Fallback width
+    let currentPosition = 0;
+    const totalWidth = cardWidth * cards.length;
+
+    // Update button states
+    function updateButtons() {
+      if (prevBtn) prevBtn.disabled = currentPosition === 0;
+      if (nextBtn) {
+        const visibleCards = Math.floor(carouselTrack.offsetWidth / cardWidth);
+        nextBtn.disabled = currentPosition <= -(totalWidth - (cardWidth * visibleCards));
+      }
+    }
+
+    // Move carousel
+    function moveCarousel() {
+      carouselTrack.style.transform = `translateX(${currentPosition}px)`;
+      updateButtons();
+    }
+
+    // Next button click
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        const maxPosition = -(totalWidth - carouselTrack.offsetWidth);
+        currentPosition = Math.max(currentPosition - cardWidth, maxPosition);
+        moveCarousel();
+      });
+    }
+
+    // Previous button click
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentPosition = Math.min(currentPosition + cardWidth, 0);
+        moveCarousel();
+      });
+    }
+
+    // Initialize
+    updateButtons();
+
+    // Touch support for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carouselTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    carouselTrack.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX && nextBtn) nextBtn.click();
+      else if (touchEndX > touchStartX && prevBtn) prevBtn.click();
+    }
+  }
+
+  // --------------------------
+// PROJECT FILTERING SYSTEM
+// --------------------------
+const filterButtons = document.querySelectorAll('.filter-btn');
+if (filterButtons.length > 0) {
+  filterButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      button.classList.add('active');
+      
+      const filterValue = button.dataset.filter;
+      filterProjects(filterValue);
+    });
   });
+}
+
+function filterProjects(filter) {
+  const cards = document.querySelectorAll('.project-card');
+  
+  cards.forEach(card => {
+    const tags = Array.from(card.querySelectorAll('.project-tags span'))
+                  .map(tag => tag.textContent.toLowerCase());
+    
+    if (filter === 'all' || tags.includes(filter)) {
+      card.style.display = 'block';
+      // Animate appearance
+      gsap.fromTo(card, 
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.5 }
+      );
+    } else {
+      // Animate disappearance
+      gsap.to(card, {
+        opacity: 0,
+        y: -20,
+        duration: 0.3,
+        onComplete: () => {
+          card.style.display = 'none';
+        }
+      });
+    }
+  });
+}
+
+  // --------------------------
+  // 3. SECRET PATH EFFECTS
+  // --------------------------
+  const secretPath = document.getElementById('secretPath');
+  const portalEffect = document.getElementById('portalEffect');
 
   secretPath.addEventListener('click', function () {
     // Play portal opening animation
@@ -364,33 +417,85 @@ function handleSwipe() {
     }
   }
 
+  // --------------------------
+  // 4. HELPER FUNCTIONS
+  // --------------------------
+  function createParticles(count) {
+    for (let i = 0; i < count; i++) {
+      const particle = document.createElement('div');
+      particle.classList.add('secret-particle');
 
+      const size = Math.random() * 10 + 5;
+      const color = `hsl(${Math.random() * 60 + 20}, 80%, 60%)`;
 
+      Object.assign(particle.style, {
+        width: `${size}px`,
+        height: `${size}px`,
+        backgroundColor: color,
+        left: `${Math.random() * 100}vw`,
+        top: `${Math.random() * 100}vh`
+      });
 
+      document.body.appendChild(particle);
 
+      gsap.to(particle, {
+        x: Math.random() * 400 - 200,
+        y: Math.random() * 400 - 200,
+        opacity: 0,
+        scale: 0,
+        duration: Math.random() * 3 + 2,
+        ease: "power1.out",
+        onComplete: () => particle.remove()
+      });
+    }
+  }
 
-
-
-
-
-
-
-
-  // Logo click handler (for layout change)
-  logo.addEventListener('click', function () {
-    body.classList.toggle('new-layout');
-  });
-
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('click', function (e) {
-      // Don't trigger if clicking on links
-      if (e.target.tagName !== 'A') {
-        const link = this.querySelector('.project-link');
-        if (link) {
-          window.location.href = link.href;
-        }
+  function resetSecretPath() {
+    gsap.to(portalEffect, {
+      duration: 1,
+      width: 0,
+      height: 0,
+      opacity: 0,
+      ease: "power2.in",
+      onComplete: () => {
+        portalEffect.classList.add('portal-hidden');
+        gsap.to(document.body, {
+          duration: 1,
+          backgroundColor: '#003366'
+        });
       }
     });
 
+    gsap.to('.secret-particle', {
+      opacity: 0,
+      scale: 0,
+      duration: 1,
+      onComplete: () => {
+        document.querySelectorAll('.secret-particle').forEach(p => p.remove());
+      }
+    });
+  }
+
+  // --------------------------
+  // 5. ADDITIONAL INTERACTIONS
+  // --------------------------
+  const logo = document.getElementById('logo');
+  if (logo) {
+    logo.addEventListener('click', function () {
+      document.body.classList.toggle('new-layout');
+    });
+  }
+
+  // Project card click handling
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('click', function (e) {
+      if (e.target.tagName !== 'A') {
+        const link = this.querySelector('.project-link');
+        if (link) window.location.href = link.href;
+      }
+    });
   });
 });
+
+// Initialize console log
+console.log("Portfolio script loaded successfully");
